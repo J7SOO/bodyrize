@@ -191,9 +191,10 @@ padding:"120px 20px"
 <h2
 style={{
 textAlign:"center",
-fontSize:"50px",
-letterSpacing:"4px",
-marginBottom:"60px"
+fontSize:"52px",
+letterSpacing:"5px",
+marginBottom:"70px",
+textShadow:"0 0 15px rgba(255,0,0,0.6)"
 }}
 >
 FAQ
@@ -209,105 +210,89 @@ gap:"20px"
 }}
 >
 
-{/* QUESTION 1 */}
+{/* ITEM */}
+
+{[
+{
+q:"Le programme est-il vraiment personnalisé ?",
+a:"Oui. Chaque programme BODYRIZE est généré selon ton objectif, ton niveau et ton rythme d'entraînement."
+},
+{
+q:"En combien de temps voir des résultats ?",
+a:"Avec de la régularité et une bonne alimentation, les premiers résultats apparaissent généralement après quelques semaines."
+},
+{
+q:"Puis-je m'entraîner à la maison ?",
+a:"Oui. Si tu choisis entraînement à domicile, ton programme sera adapté avec des exercices au poids du corps."
+},
+{
+q:"Comment vais-je recevoir mon programme ?",
+a:"Ton programme BODYRIZE est généré automatiquement et envoyé par email sous forme de PDF détaillé."
+}
+].map((item,i)=>{
+
+const index=i+1
+const active=faq===index
+
+return(
 
 <div
+key={index}
 style={{
 background:"#141414",
 border:"1px solid #2a2a2a",
 borderRadius:"12px",
-padding:"25px",
+overflow:"hidden",
 cursor:"pointer"
 }}
-onClick={()=>setFaq(faq===1?null:1)}
+onClick={()=>setFaq(active?null:index)}
 >
-
-<h3 style={{fontSize:"22px"}}>
-Le programme est-il vraiment personnalisé ?
-</h3>
-
-{faq===1 && (
-<p style={{marginTop:"15px",opacity:"0.8"}}>
-Oui. Chaque programme BODYRIZE est généré en fonction de tes réponses : ton objectif, ton niveau, ton lieu d'entraînement et le nombre de séances par semaine.
-</p>
-)}
-
-</div>
-
-{/* QUESTION 2 */}
 
 <div
 style={{
-background:"#141414",
-border:"1px solid #2a2a2a",
-borderRadius:"12px",
 padding:"25px",
-cursor:"pointer"
+display:"flex",
+justifyContent:"space-between",
+alignItems:"center"
 }}
-onClick={()=>setFaq(faq===2?null:2)}
 >
 
 <h3 style={{fontSize:"22px"}}>
-En combien de temps puis-je voir des résultats ?
+{item.q}
 </h3>
 
-{faq===2 && (
-<p style={{marginTop:"15px",opacity:"0.8"}}>
-Avec de la régularité et une bonne alimentation, la majorité des personnes commencent à voir des changements physiques après quelques semaines d'entraînement.
-</p>
-)}
+<span
+style={{
+fontSize:"28px",
+color:"#ff0000"
+}}
+>
+{active?"−":"+"}
+</span>
 
 </div>
-
-{/* QUESTION 3 */}
 
 <div
 style={{
-background:"#141414",
-border:"1px solid #2a2a2a",
-borderRadius:"12px",
-padding:"25px",
-cursor:"pointer"
+maxHeight:active?"200px":"0px",
+overflow:"hidden",
+transition:"all 0.4s ease",
+padding:active?"0 25px 25px 25px":"0 25px",
+opacity:active?1:0.6
 }}
-onClick={()=>setFaq(faq===3?null:3)}
 >
 
-<h3 style={{fontSize:"22px"}}>
-Puis-je faire le programme à la maison ?
-</h3>
-
-{faq===3 && (
-<p style={{marginTop:"15px",opacity:"0.8"}}>
-Oui. Si tu choisis entraînement à domicile dans le questionnaire, les exercices seront adaptés au poids du corps ou avec peu de matériel.
+<p style={{opacity:"0.8"}}>
+{item.a}
 </p>
-)}
 
 </div>
 
-{/* QUESTION 4 */}
-
-<div
-style={{
-background:"#141414",
-border:"1px solid #2a2a2a",
-borderRadius:"12px",
-padding:"25px",
-cursor:"pointer"
-}}
-onClick={()=>setFaq(faq===4?null:4)}
->
-
-<h3 style={{fontSize:"22px"}}>
-Comment vais-je recevoir mon programme ?
-</h3>
-
-{faq===4 && (
-<p style={{marginTop:"15px",opacity:"0.8"}}>
-Une fois le questionnaire rempli, ton programme BODYRIZE est généré automatiquement et envoyé par email sous forme de PDF détaillé.
-</p>
-)}
-
 </div>
+
+)
+
+})}
 
 </div>
 
