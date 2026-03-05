@@ -2,118 +2,321 @@
 
 import { useState } from "react"
 
-export default function Formulaire() {
+export default function Formulaire(){
 
 const [objectif,setObjectif] = useState("")
 const [lieu,setLieu] = useState("")
+const [age,setAge] = useState("")
+const [poids,setPoids] = useState("")
+const [nom,setNom] = useState("")
+const [prenom,setPrenom] = useState("")
+const [description,setDescription] = useState("")
 
-const handleSubmit = (e:any) => {
-e.preventDefault()
-
-if(objectif === "prise" && lieu === "salle"){
-window.location.href="/programmes/prise_salle.pdf"
+const titreStyle = {
+textAlign:"center",
+fontSize:"26px",
+fontWeight:"900",
+letterSpacing:"2px",
+borderBottom:"2px solid white",
+paddingBottom:"10px",
+marginBottom:"25px"
 }
 
-if(objectif === "prise" && lieu === "maison"){
-window.location.href="/programmes/prise_maison.pdf"
-}
+return(
 
-if(objectif === "perte" && lieu === "salle"){
-window.location.href="/programmes/perte_salle.pdf"
-}
+<div style={{
+minHeight:"100vh",
+backgroundImage:"url('/gym-bg.jpg')",
+backgroundSize:"cover",
+backgroundPosition:"center",
+display:"flex",
+flexDirection:"column",
+alignItems:"center",
+paddingBottom:"80px"
+}}>
 
-if(objectif === "perte" && lieu === "maison"){
-window.location.href="/programmes/perte_maison.pdf"
-}
-
-}
-
-return (
-
-<div className="min-h-screen flex items-center justify-center bg-black text-white">
-
-<form onSubmit={handleSubmit} className="space-y-6 w-full max-w-xl p-8">
-
-<h1 className="text-3xl font-bold text-center">
-Personnalise ton programme
+<h1 style={{
+marginTop:"90px",
+color:"white",
+fontSize:"50px",
+fontWeight:"900",
+letterSpacing:"4px",
+textShadow:"0px 5px 20px rgba(0,0,0,0.9)"
+}}>
+CRÉE TON PROGRAMME
 </h1>
 
-<input
-type="number"
-placeholder="Age"
-required
-className="w-full p-4 rounded-lg text-black"
-/>
+
+
+<div style={{marginTop:"50px",display:"flex",gap:"40px"}}>
+
+{/* OBJECTIF */}
+
+<div style={{
+width:"260px",
+padding:"25px",
+border:"2px solid white",
+background:"rgba(0,0,0,0.75)",
+color:"white"
+}}>
+
+<h2 style={titreStyle}>OBJECTIF</h2>
+
+<div style={{display:"flex",flexDirection:"column",gap:"18px"}}>
+
+<div
+onClick={()=>setObjectif("prise")}
+style={{
+border:"2px solid white",
+padding:"16px",
+cursor:"pointer",
+textAlign:"center",
+fontSize:"20px",
+fontWeight:"800",
+background: objectif==="prise" ? "#b91c1c" : "transparent"
+}}
+onMouseEnter={(e)=>e.currentTarget.style.boxShadow="0 0 15px red"}
+onMouseLeave={(e)=>e.currentTarget.style.boxShadow="none"}
+> 
+🔥 PRISE DE MASSE
+</div>
+
+<div
+onClick={()=>setObjectif("perte")}
+style={{
+border:"2px solid white",
+padding:"16px",
+cursor:"pointer",
+textAlign:"center",
+fontSize:"20px",
+fontWeight:"800",
+background: objectif==="perte" ? "#b91c1c" : "transparent"
+}}
+onMouseEnter={(e)=>e.currentTarget.style.boxShadow="0 0 15px red"}
+onMouseLeave={(e)=>e.currentTarget.style.boxShadow="none"}
+> 
+🔥 PERTE DE POIDS
+</div>
+
+</div>
+</div>
+
+
+
+{/* LIEU */}
+
+<div style={{
+width:"260px",
+padding:"25px",
+border:"2px solid white",
+background:"rgba(0,0,0,0.75)",
+color:"white"
+}}>
+
+<h2 style={titreStyle}>LIEU</h2>
+
+<div style={{display:"flex",flexDirection:"column",gap:"18px"}}>
+
+<div
+onClick={()=>setLieu("salle")}
+style={{
+border:"2px solid white",
+padding:"16px",
+cursor:"pointer",
+textAlign:"center",
+fontSize:"20px",
+fontWeight:"800",
+background: lieu==="salle" ? "#b91c1c" : "transparent"
+}}
+onMouseEnter={(e)=>e.currentTarget.style.boxShadow="0 0 15px red"}
+onMouseLeave={(e)=>e.currentTarget.style.boxShadow="none"}
+> 
+🏋️ SALLE
+</div>
+
+<div
+onClick={()=>setLieu("maison")}
+style={{
+border:"2px solid white",
+padding:"16px",
+cursor:"pointer",
+textAlign:"center",
+fontSize:"20px",
+fontWeight:"800",
+background: lieu==="maison" ? "#b91c1c" : "transparent"
+}}
+onMouseEnter={(e)=>e.currentTarget.style.boxShadow="0 0 15px red"}
+onMouseLeave={(e)=>e.currentTarget.style.boxShadow="none"}
+> 
+🏠 MAISON
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+{/* AGE POIDS */}
+
+<div style={{marginTop:"40px",display:"flex",gap:"40px"}}>
+
+<div style={{
+width:"260px",
+padding:"25px",
+border:"2px solid white",
+background:"rgba(0,0,0,0.75)",
+color:"white"
+}}>
+
+<h2 style={titreStyle}>ÂGE</h2>
 
 <input
-type="number"
-placeholder="Poids (kg)"
-required
-className="w-full p-4 rounded-lg text-black"
+value={age}
+onChange={(e)=>setAge(e.target.value)}
+placeholder="Ton âge"
+style={{width:"100%",padding:"12px"}}
 />
+
+</div>
+
+
+<div style={{
+width:"260px",
+padding:"25px",
+border:"2px solid white",
+background:"rgba(0,0,0,0.75)",
+color:"white"
+}}>
+
+<h2 style={titreStyle}>POIDS</h2>
 
 <input
-type="number"
-placeholder="Taille (cm)"
-required
-className="w-full p-4 rounded-lg text-black"
+value={poids}
+onChange={(e)=>setPoids(e.target.value)}
+placeholder="Ton poids"
+style={{width:"100%",padding:"12px"}}
 />
 
-<select
-required
-value={objectif}
-onChange={(e)=>setObjectif(e.target.value)}
-className="w-full p-4 rounded-lg text-black"
->
+</div>
 
-<option value="">Objectif</option>
-<option value="prise">Prise de masse</option>
-<option value="perte">Perte de poids</option>
+</div>
 
-</select>
 
-<select
-required
-value={lieu}
-onChange={(e)=>setLieu(e.target.value)}
-className="w-full p-4 rounded-lg text-black"
->
 
-<option value="">Lieu d'entraînement</option>
-<option value="salle">Salle de sport</option>
-<option value="maison">Maison</option>
+{/* NOM PRENOM */}
 
-</select>
+<div style={{marginTop:"40px",display:"flex",gap:"40px"}}>
 
-<select
-required
-className="w-full p-4 rounded-lg text-black"
->
+<div style={{
+width:"260px",
+padding:"25px",
+border:"2px solid white",
+background:"rgba(0,0,0,0.75)",
+color:"white"
+}}>
 
-<option value="">Nombre de séances par semaine</option>
-<option value="4">4 séances obligatoires</option>
+<h2 style={titreStyle}>NOM</h2>
 
-</select>
+<input
+value={nom}
+onChange={(e)=>setNom(e.target.value)}
+placeholder="Nom"
+style={{width:"100%",padding:"12px"}}
+/>
+
+</div>
+
+
+<div style={{
+width:"260px",
+padding:"25px",
+border:"2px solid white",
+background:"rgba(0,0,0,0.75)",
+color:"white"
+}}>
+
+<h2 style={titreStyle}>PRÉNOM</h2>
+
+<input
+value={prenom}
+onChange={(e)=>setPrenom(e.target.value)}
+placeholder="Prénom"
+style={{width:"100%",padding:"12px"}}
+/>
+
+</div>
+
+</div>
+
+
+
+{/* DESCRIPTION */}
+
+<div style={{
+marginTop:"40px",
+width:"560px",
+padding:"25px",
+border:"2px solid white",
+background:"rgba(0,0,0,0.75)",
+color:"white"
+}}>
+
+<h2 style={titreStyle}>OBJECTIF PERSONNEL</h2>
 
 <textarea
-placeholder="Décris ton objectif ou tes attentes"
-className="w-full p-4 rounded-lg text-black"
-rows={4}
+value={description}
+onChange={(e)=>setDescription(e.target.value)}
+placeholder="Explique ton objectif..."
+style={{
+width:"100%",
+height:"120px",
+padding:"15px"
+}}
 />
 
+</div>
+
+
+
+{/* BOUTON */}
+
+<div style={{
+marginTop:"50px",
+display:"flex",
+justifyContent:"center"
+}}>
+
 <button
-type="submit"
-className="w-full bg-red-600 hover:bg-red-700 p-4 rounded-xl font-bold text-lg"
->
+style={{
+background:"#b91c1c",
+color:"white",
+border:"none",
+padding:"18px 60px",
+fontSize:"22px",
+fontWeight:"900",
+letterSpacing:"2px",
+cursor:"pointer",
+transition:"0.2s"
+}}
 
-Générer mon programme
+onMouseEnter={(e)=>{
+e.currentTarget.style.boxShadow="0 0 25px red"
+}}
 
+onMouseLeave={(e)=>{
+e.currentTarget.style.boxShadow="none"
+}}
+
+> 
+🔥 GÉNÉRER MON PROGRAMME
 </button>
 
-</form>
+</div>
+
 
 </div>
 
 )
-
 }
