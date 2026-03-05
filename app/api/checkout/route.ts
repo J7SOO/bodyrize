@@ -36,10 +36,10 @@ quantity:1
 
 mode:"payment",
 
-success_url:${process.env.NEXT_PUBLIC_SITE_URL}/success,
-cancel_url:${process.env.NEXT_PUBLIC_SITE_URL},
+success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/success`,
+cancel_url:  `${process.env.NEXT_PUBLIC_SITE_URL}`,
 
-customer_email:email
+customer_email:email,
 
 })
 
