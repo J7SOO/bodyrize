@@ -1,26 +1,18 @@
-import { NextResponse } from "next/server"
 import Stripe from "stripe"
+import { NextResponse } from "next/server"
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
 
-export async function POST(req: Request) {
+export async function POST(req: Request){
 
-const { formule } = await req.json()
+const data = await req.json()
 
-let price = 0
-let name = ""
-let description = ""
+const { formule,email } = data
 
-if(formule === "bodyrize"){
-price = 999
-name = "Programme BODYRIZE"
-description = "Programme d'entraînement personnalisé"
-}
+let price = 1299
 
-if(formule === "bodyboost"){
-price = 1599
-name = "Programme BODYBOOST"
-description = "Programme + nutrition personnalisée"
+if(formule === "premium"){
+price = 1795
 }
 
 const session = await stripe.checkout.sessions.create({
@@ -32,9 +24,9 @@ line_items:[
 price_data:{
 currency:"eur",
 product_data:{
-name:name,
-description:description,
-images:["https://bodyrize.fr/logo.png"]
+name: formule === "premium"
+? "Programme BodyRize + Nutrition"
+: "Programme BodyRize"
 },
 unit_amount:price
 },
@@ -44,9 +36,10 @@ quantity:1
 
 mode:"payment",
 
-success_url:`${process.env.NEXT_PUBLIC_URL}/success?formule=${formule}`,
+success_url:${process.env.NEXT_PUBLIC_SITE_URL}/success,
+cancel_url:${process.env.NEXT_PUBLIC_SITE_URL},
 
-cancel_url:`${process.env.NEXT_PUBLIC_URL}/formules`
+customer_email:email
 
 })
 
