@@ -27,7 +27,7 @@ html: "<h2>Ton programme est prêt 💪</h2>",
 attachments: [
 {
 filename: programme,
-path: ./programmes/${programme}
+path: `./programmes/${programme}`
 }
 ]
 })
