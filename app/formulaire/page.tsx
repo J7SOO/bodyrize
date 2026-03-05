@@ -12,16 +12,6 @@ const [nom,setNom] = useState("")
 const [prenom,setPrenom] = useState("")
 const [description,setDescription] = useState("")
 
-const titreStyle = {
-textAlign:"center",
-fontSize:"26px",
-fontWeight:"900",
-letterSpacing:"2px",
-borderBottom:"2px solid white",
-paddingBottom:"10px",
-marginBottom:"25px"
-}
-
 return(
 
 <div style={{
@@ -50,51 +40,19 @@ CRÉE TON PROGRAMME
 
 <div style={{marginTop:"50px",display:"flex",gap:"40px"}}>
 
-{/* OBJECTIF */}
+<div style={{width:"260px",padding:"25px",border:"2px solid white",background:"rgba(0,0,0,0.75)",color:"white"}}>
 
-<div style={{
-width:"260px",
-padding:"25px",
-border:"2px solid white",
-background:"rgba(0,0,0,0.75)",
-color:"white"
-}}>
-
-<h2 style={titreStyle}>OBJECTIF</h2>
+<h2 style={{textAlign:"center",fontSize:"26px",fontWeight:"900",letterSpacing:"2px",borderBottom:"2px solid white",paddingBottom:"10px",marginBottom:"25px"}}>
+OBJECTIF
+</h2>
 
 <div style={{display:"flex",flexDirection:"column",gap:"18px"}}>
 
-<div
-onClick={()=>setObjectif("prise")}
-style={{
-border:"2px solid white",
-padding:"16px",
-cursor:"pointer",
-textAlign:"center",
-fontSize:"20px",
-fontWeight:"800",
-background: objectif==="prise" ? "#b91c1c" : "transparent"
-}}
-onMouseEnter={(e)=>e.currentTarget.style.boxShadow="0 0 15px red"}
-onMouseLeave={(e)=>e.currentTarget.style.boxShadow="none"}
-> 
+<div onClick={()=>setObjectif("prise")} style={{border:"2px solid white",padding:"16px",cursor:"pointer",textAlign:"center",fontSize:"20px",fontWeight:"800",background: objectif==="prise" ? "#b91c1c" : "transparent"}} onMouseEnter={(e)=>e.currentTarget.style.boxShadow="0 0 15px red"} onMouseLeave={(e)=>e.currentTarget.style.boxShadow="none"}>
 🔥 PRISE DE MASSE
 </div>
 
-<div
-onClick={()=>setObjectif("perte")}
-style={{
-border:"2px solid white",
-padding:"16px",
-cursor:"pointer",
-textAlign:"center",
-fontSize:"20px",
-fontWeight:"800",
-background: objectif==="perte" ? "#b91c1c" : "transparent"
-}}
-onMouseEnter={(e)=>e.currentTarget.style.boxShadow="0 0 15px red"}
-onMouseLeave={(e)=>e.currentTarget.style.boxShadow="none"}
-> 
+<div onClick={()=>setObjectif("perte")} style={{border:"2px solid white",padding:"16px",cursor:"pointer",textAlign:"center",fontSize:"20px",fontWeight:"800",background: objectif==="perte" ? "#b91c1c" : "transparent"}} onMouseEnter={(e)=>e.currentTarget.style.boxShadow="0 0 15px red"} onMouseLeave={(e)=>e.currentTarget.style.boxShadow="none"}>
 🔥 PERTE DE POIDS
 </div>
 
@@ -103,51 +61,19 @@ onMouseLeave={(e)=>e.currentTarget.style.boxShadow="none"}
 
 
 
-{/* LIEU */}
+<div style={{width:"260px",padding:"25px",border:"2px solid white",background:"rgba(0,0,0,0.75)",color:"white"}}>
 
-<div style={{
-width:"260px",
-padding:"25px",
-border:"2px solid white",
-background:"rgba(0,0,0,0.75)",
-color:"white"
-}}>
-
-<h2 style={titreStyle}>LIEU</h2>
+<h2 style={{textAlign:"center",fontSize:"26px",fontWeight:"900",letterSpacing:"2px",borderBottom:"2px solid white",paddingBottom:"10px",marginBottom:"25px"}}>
+LIEU
+</h2>
 
 <div style={{display:"flex",flexDirection:"column",gap:"18px"}}>
 
-<div
-onClick={()=>setLieu("salle")}
-style={{
-border:"2px solid white",
-padding:"16px",
-cursor:"pointer",
-textAlign:"center",
-fontSize:"20px",
-fontWeight:"800",
-background: lieu==="salle" ? "#b91c1c" : "transparent"
-}}
-onMouseEnter={(e)=>e.currentTarget.style.boxShadow="0 0 15px red"}
-onMouseLeave={(e)=>e.currentTarget.style.boxShadow="none"}
-> 
+<div onClick={()=>setLieu("salle")} style={{border:"2px solid white",padding:"16px",cursor:"pointer",textAlign:"center",fontSize:"20px",fontWeight:"800",background: lieu==="salle" ? "#b91c1c" : "transparent"}} onMouseEnter={(e)=>e.currentTarget.style.boxShadow="0 0 15px red"} onMouseLeave={(e)=>e.currentTarget.style.boxShadow="none"}>
 🏋️ SALLE
 </div>
 
-<div
-onClick={()=>setLieu("maison")}
-style={{
-border:"2px solid white",
-padding:"16px",
-cursor:"pointer",
-textAlign:"center",
-fontSize:"20px",
-fontWeight:"800",
-background: lieu==="maison" ? "#b91c1c" : "transparent"
-}}
-onMouseEnter={(e)=>e.currentTarget.style.boxShadow="0 0 15px red"}
-onMouseLeave={(e)=>e.currentTarget.style.boxShadow="none"}
-> 
+<div onClick={()=>setLieu("maison")} style={{border:"2px solid white",padding:"16px",cursor:"pointer",textAlign:"center",fontSize:"20px",fontWeight:"800",background: lieu==="maison" ? "#b91c1c" : "transparent"}} onMouseEnter={(e)=>e.currentTarget.style.boxShadow="0 0 15px red"} onMouseLeave={(e)=>e.currentTarget.style.boxShadow="none"}>
 🏠 MAISON
 </div>
 
@@ -158,46 +84,55 @@ onMouseLeave={(e)=>e.currentTarget.style.boxShadow="none"}
 
 
 
-{/* AGE POIDS */}
+<div style={{marginTop:"40px",display:"flex",gap:"40px"}}>
+
+<div style={{width:"260px",padding:"25px",border:"2px solid white",background:"rgba(0,0,0,0.75)",color:"white"}}>
+
+<h2 style={{textAlign:"center",fontSize:"26px",fontWeight:"900",letterSpacing:"2px",borderBottom:"2px solid white",paddingBottom:"10px",marginBottom:"25px"}}>
+ÂGE
+</h2>
+
+<input value={age} onChange={(e)=>setAge(e.target.value)} placeholder="Ton âge" style={{width:"100%",padding:"12px"}}/>
+
+</div>
+
+
+
+<div style={{width:"260px",padding:"25px",border:"2px solid white",background:"rgba(0,0,0,0.75)",color:"white"}}>
+
+<h2 style={{textAlign:"center",fontSize:"26px",fontWeight:"900",letterSpacing:"2px",borderBottom:"2px solid white",paddingBottom:"10px",marginBottom:"25px"}}>
+POIDS
+</h2>
+
+<input value={poids} onChange={(e)=>setPoids(e.target.value)} placeholder="Ton poids" style={{width:"100%",padding:"12px"}}/>
+
+</div>
+
+</div>
+
+
 
 <div style={{marginTop:"40px",display:"flex",gap:"40px"}}>
 
-<div style={{
-width:"260px",
-padding:"25px",
-border:"2px solid white",
-background:"rgba(0,0,0,0.75)",
-color:"white"
-}}>
+<div style={{width:"260px",padding:"25px",border:"2px solid white",background:"rgba(0,0,0,0.75)",color:"white"}}>
 
-<h2 style={titreStyle}>ÂGE</h2>
+<h2 style={{textAlign:"center",fontSize:"26px",fontWeight:"900",letterSpacing:"2px",borderBottom:"2px solid white",paddingBottom:"10px",marginBottom:"25px"}}>
+NOM
+</h2>
 
-<input
-value={age}
-onChange={(e)=>setAge(e.target.value)}
-placeholder="Ton âge"
-style={{width:"100%",padding:"12px"}}
-/>
+<input value={nom} onChange={(e)=>setNom(e.target.value)} placeholder="Nom" style={{width:"100%",padding:"12px"}}/>
 
 </div>
 
 
-<div style={{
-width:"260px",
-padding:"25px",
-border:"2px solid white",
-background:"rgba(0,0,0,0.75)",
-color:"white"
-}}>
 
-<h2 style={titreStyle}>POIDS</h2>
+<div style={{width:"260px",padding:"25px",border:"2px solid white",background:"rgba(0,0,0,0.75)",color:"white"}}>
 
-<input
-value={poids}
-onChange={(e)=>setPoids(e.target.value)}
-placeholder="Ton poids"
-style={{width:"100%",padding:"12px"}}
-/>
+<h2 style={{textAlign:"center",fontSize:"26px",fontWeight:"900",letterSpacing:"2px",borderBottom:"2px solid white",paddingBottom:"10px",marginBottom:"25px"}}>
+PRÉNOM
+</h2>
+
+<input value={prenom} onChange={(e)=>setPrenom(e.target.value)} placeholder="Prénom" style={{width:"100%",padding:"12px"}}/>
 
 </div>
 
@@ -205,116 +140,30 @@ style={{width:"100%",padding:"12px"}}
 
 
 
-{/* NOM PRENOM */}
+<div style={{marginTop:"40px",width:"560px",padding:"25px",border:"2px solid white",background:"rgba(0,0,0,0.75)",color:"white"}}>
 
-<div style={{marginTop:"40px",display:"flex",gap:"40px"}}>
+<h2 style={{textAlign:"center",fontSize:"26px",fontWeight:"900",letterSpacing:"2px",borderBottom:"2px solid white",paddingBottom:"10px",marginBottom:"25px"}}>
+OBJECTIF PERSONNEL
+</h2>
 
-<div style={{
-width:"260px",
-padding:"25px",
-border:"2px solid white",
-background:"rgba(0,0,0,0.75)",
-color:"white"
-}}>
-
-<h2 style={titreStyle}>NOM</h2>
-
-<input
-value={nom}
-onChange={(e)=>setNom(e.target.value)}
-placeholder="Nom"
-style={{width:"100%",padding:"12px"}}
-/>
-
-</div>
-
-
-<div style={{
-width:"260px",
-padding:"25px",
-border:"2px solid white",
-background:"rgba(0,0,0,0.75)",
-color:"white"
-}}>
-
-<h2 style={titreStyle}>PRÉNOM</h2>
-
-<input
-value={prenom}
-onChange={(e)=>setPrenom(e.target.value)}
-placeholder="Prénom"
-style={{width:"100%",padding:"12px"}}
-/>
-
-</div>
+<textarea value={description} onChange={(e)=>setDescription(e.target.value)} placeholder="Explique ton objectif..." style={{width:"100%",height:"120px",padding:"15px"}}/>
 
 </div>
 
 
 
-{/* DESCRIPTION */}
+<div style={{marginTop:"50px",display:"flex",justifyContent:"center"}}>
 
-<div style={{
-marginTop:"40px",
-width:"560px",
-padding:"25px",
-border:"2px solid white",
-background:"rgba(0,0,0,0.75)",
-color:"white"
-}}>
+<button style={{background:"#b91c1c",color:"white",border:"none",padding:"18px 60px",fontSize:"22px",fontWeight:"900",letterSpacing:"2px",cursor:"pointer"}}
+onMouseEnter={(e)=>{e.currentTarget.style.boxShadow="0 0 25px red"}}
+onMouseLeave={(e)=>{e.currentTarget.style.boxShadow="none"}}
+>
 
-<h2 style={titreStyle}>OBJECTIF PERSONNEL</h2>
-
-<textarea
-value={description}
-onChange={(e)=>setDescription(e.target.value)}
-placeholder="Explique ton objectif..."
-style={{
-width:"100%",
-height:"120px",
-padding:"15px"
-}}
-/>
-
-</div>
-
-
-
-{/* BOUTON */}
-
-<div style={{
-marginTop:"50px",
-display:"flex",
-justifyContent:"center"
-}}>
-
-<button
-style={{
-background:"#b91c1c",
-color:"white",
-border:"none",
-padding:"18px 60px",
-fontSize:"22px",
-fontWeight:"900",
-letterSpacing:"2px",
-cursor:"pointer",
-transition:"0.2s"
-}}
-
-onMouseEnter={(e)=>{
-e.currentTarget.style.boxShadow="0 0 25px red"
-}}
-
-onMouseLeave={(e)=>{
-e.currentTarget.style.boxShadow="none"
-}}
-
-> 
 🔥 GÉNÉRER MON PROGRAMME
+
 </button>
 
 </div>
-
 
 </div>
 
